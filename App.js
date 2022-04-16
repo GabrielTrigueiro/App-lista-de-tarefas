@@ -1,11 +1,23 @@
-import React, {usaState} from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, SafeAreaView, StatusBar, 
   TouchableOpacity, FlatList} from 'react-native';
+import TaskList from './src/components/TaskList/index';
 
 //importando os icones da lib instalada
 import Icon from 'react-native-vector-icons/Ionicons';
 
+
 export default function App(){
+
+  //criando um state para lista
+  const [task, setTask] = useState([
+    {key: 1, task: 'Comprar pão'},
+    {key: 2, task: 'Comprar '},
+    {key: 3, task: ' pão'},
+    {key: 4, task: 'Comprarpão'},
+    {key: 5, task: 'Com prar pão'},
+  ]);
+
   return(
     <SafeAreaView style={styles.container}>
 
@@ -15,7 +27,16 @@ export default function App(){
       <Text style={styles.titleText}>Lista de Afazeres</Text>
     </View>
 
-    {/* Criando uma lista */}
+    {/* Criando uma lista
+    data recebea task
+    keyextractor receber uma chave e retornar uma task conrespondente */}
+    <FlatList 
+      marginHorizontal={10}
+      showsHorizontalScrollIndicator={false}
+      data={task}
+      keyExtractor={(item) => String(item.key)}
+      renderItem={({item}) => <TaskList data={item} />}
+    />
 
     <TouchableOpacity style={styles.botaoPlus}>
       {/* exemplo da chamada de um ícone
