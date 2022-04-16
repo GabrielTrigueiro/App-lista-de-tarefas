@@ -1,5 +1,6 @@
 import React, {usaState} from 'react';
-import {View, Text, StyleSheet, SafeAreaView, StatusBar, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView, StatusBar, 
+  TouchableOpacity, FlatList} from 'react-native';
 
 //importando os icones da lib instalada
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -14,10 +15,12 @@ export default function App(){
       <Text style={styles.titleText}>Lista de Afazeres</Text>
     </View>
 
-    <TouchableOpacity>
+    {/* Criando uma lista */}
+
+    <TouchableOpacity style={styles.botaoPlus}>
       {/* exemplo da chamada de um ícone
       link dos nomes: https://oblador.github.io/react-native-vector-icons/ */}
-      <Icon name="add-circle" size={25} color="white" />
+      <Icon name="ios-add" size={30} color="white" />
     </TouchableOpacity>
 
   </SafeAreaView>
@@ -38,5 +41,24 @@ const styles = StyleSheet.create({
     fontSize:25,
     textAlign:'center',
     color:'#fff'
+  },
+  botaoPlus:{
+    backgroundColor:'#0094FF',
+    position:'absolute',
+    width:60,
+    height:60,
+    justifyContent:'center',
+    alignItems:'center',
+    borderRadius:30,
+    right:25,
+    bottom: 25,
+    elevation:2,
+    zIndex:9,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowOffset:{
+      width:1,
+      height:3,
+    }
   },
 });
