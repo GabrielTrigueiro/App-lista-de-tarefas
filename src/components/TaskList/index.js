@@ -1,12 +1,18 @@
 import React from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import * as Animatable from 'react-native-animatable';//lib pra animações
 
-
-export default function TaskList({data}){
+//função da tasklist
+export default function TaskList({data, handleDelete}){
     return(
-        <View style={styles.container}>
-            <TouchableOpacity>
+        <Animatable.View 
+        style={styles.container}
+        //animando as tasks
+        animation="bounceIn"
+        useNativeDriver
+        >
+            <TouchableOpacity onPress={()=> handleDelete(data)}>
                 <Icon name={"checkmark-circle-outline"} size={30} color={"#121212"} />
             </TouchableOpacity>
 
@@ -15,7 +21,7 @@ export default function TaskList({data}){
                     {data.task}
                 </Text>
             </View>
-        </View>
+        </Animatable.View>
         
     )
 }
